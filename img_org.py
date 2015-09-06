@@ -29,6 +29,6 @@ for f in [f for f in files if os.path.isfile(dr+"/"+f)]:
         shutil.move(dr+"/"+f, dr2 + "/" +folder+"/"+f)
         print("Moved "+ f + "  to " + folder)
     except:
-        e = sys.exc_info()[0]
+        #e = sys.exc_info()[0]
         #print("Error: "+ str(e))
         print("skipped "+f)        
