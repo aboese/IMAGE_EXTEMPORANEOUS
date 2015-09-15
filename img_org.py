@@ -22,13 +22,13 @@ for f in [f for f in files if os.path.isfile(dr+"/"+f)]:
     try:
         temp = str(tags['EXIF DateTimeOriginal'])
         ts = datetime.datetime.strptime(temp, "%Y:%m:%d %H:%M:%S")
-        folder = str(ts.year) + '_' + str(ts.month) + '_' + str(ts.day)
+        folder = str(ts.year).zfill(4) + '_' + str(ts.month).zfill(2) + '_' + str(ts.day).zfill(2)
 
-        if not os.path.exists(folder):
-            os.makedirs(folder)
+        if not os.path.exists(dr2+"/"+folder):
+            os.makedirs(dr2+"/"+folder)
         shutil.move(dr+"/"+f, dr2 + "/" +folder+"/"+f)
         print("Moved "+ f + "  to " + folder)
     except:
-        #e = sys.exc_info()[0]
+        e = sys.exc_info()[0]
         #print("Error: "+ str(e))
         print("skipped "+f)        
